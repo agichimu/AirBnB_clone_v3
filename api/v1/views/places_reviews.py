@@ -15,7 +15,7 @@ def get_reviews(place_id):
     if all_places is None:
         abort(404)
     values = [val.to_dict() for val in all_places.reviews]
-    return jsonify(values)
+    return jsonify(values), 200
 
 
 @app_views.route("/reviews/<review_id>", methods=["GET"])
@@ -31,7 +31,7 @@ def delete_review(review_id):
     value = storage.get('Review', review_id)
     abort(404) if value is None else value.delete()
     storage.save()
-    return jsonify({})
+    return jsonify({}), 200
 
 
 @app_views.route("/places/<place_id>/reviews", methods=['POST'])
@@ -73,4 +73,4 @@ def put_review(review_id):
             setattr(val, key, value)
     """to persist in storage"""
     val.save()
-    return jsonify(val.to_dict())
+    return jsonify(val.to_dict()), 200
