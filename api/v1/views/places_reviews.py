@@ -38,16 +38,16 @@ def delete_review(review_id):
 def post_review(place_id):
     """posts data to existing json blob"""
     if not request.get_json():
-        return jsonify({"error: Not a JSON"}), 400
+        return jsonify({"error": "Not a JSON"}), 400
     blob = request.get_json()
     if 'user_id' not in blob:
-        return jsonify({"error: Missing user_id"}), 400
+        return jsonify({"error": "Missing user_id"}), 400
     user_id = blob['user_id']
     users = storage.get('User', user_id)
     if users is None:
         abort(404)
     if 'text' not in blob:
-        return jsonify({"error: Missing text"}), 400
+        return jsonify({"error": "Missing text"}), 400
     """create it using the blob data"""
     newObject = Review(**blob)
     """save it to persist in memory"""
@@ -60,7 +60,7 @@ def post_review(place_id):
 def put_review(review_id):
     """updates a Review object"""
     if not request.get_json():
-        return jsonify({"error: Not a JSON"}), 400
+        return jsonify({"error": "Not a JSON"}), 400
     blob = request.get_json()
     """the state_id is not in database"""
     val = storage.get('Review', review_id)
