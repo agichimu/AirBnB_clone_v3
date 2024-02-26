@@ -12,7 +12,7 @@ Our project aims to create a RESTful API for an AirBnB clone. It provides endpoi
 
 ## Installation
 To run this project locally, follow these steps:
-1. Clone this repository: `git clone https://github.com/your_username/AirBnB_clone_v3.git`
+1. Clone this repository: `git clone https://github.com/agichimu/AirBnB_clone_v3.git`
 2. Navigate to the project directory: `cd AirBnB_clone_v3`
 3. Install Flask: `pip3 install Flask`
 4. Run the application: `python3 app.py`
